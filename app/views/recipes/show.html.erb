@@ -1,1 +1,37 @@
-<h1>Recipe</h1>
+<div class="d-flex flex-column">
+  <h1 class="align-self-center"><%= @recipe.name %></h1>
+  <div class="d-flex justify-content-between mt-5">
+    <h4>Preparation time: <%= @recipe.preparation_time %></h4>
+    <button class="btn btn-secondary">Public</button>
+  </div>
+  <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+  <p>Steps go here...</p>
+
+  <div class="d-flex justify-content-between mt-5">
+    <button class="btn btn-secondary">Generate shopping list</button>
+    <button class="btn btn-secondary">Add Ingredient</button>
+  </div>
+  <hr class="my-5 py-1 bg-dark"/>
+  <table class="table table-striped table-hover table-bordered border-dark">
+  <thead class="container">
+    <tr class="row">
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Value</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row">
+      <td class="col">Mark</td>
+      <td class="col">Otto</td>
+      <td class="col">@mdo</td>
+      <td class="col d-flex">
+         <%= link_to  "MODIFY", recipe_path(@recipe), class:"btn btn-primary me-4" %>
+         <%= link_to "REMOVE", @recipe, data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure?' }, class:"btn btn-danger" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to  "See all recipes", recipes_path, class:"btn btn-primary mt-5 align-self-end" %>
+</div>
