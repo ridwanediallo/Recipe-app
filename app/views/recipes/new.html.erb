@@ -1,0 +1,43 @@
+
+<%= form_with model: @recipe, url: recipes_path, method: :post, local: true, scope: :recipe do |form| %>
+  <% if @recipe.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@recipe.errors.size, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+        <% @recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :preparation_time %>
+    <%= form.text_field :preparation_time, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cooking_time %>
+    <%= form.text_field :cooking_time, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :public %>
+    <%= form.text_field :public, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
+<% end %>
