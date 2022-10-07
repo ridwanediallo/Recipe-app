@@ -1,0 +1,25 @@
+<div>
+    <%= link_to  "Add Food", new_food_path, class:"btn btn-primary mb-4" %>
+  <table class="table table-striped table-hover table-bordered border-dark">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Measurement unit</th>
+      <th class="col">Value</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= food.measurement_unit %></td>
+      <td>$<%= food.price %></td>
+      <td>
+         <%= link_to "REMOVE", food, data: { 'turbo-method': :delete,'turbo-confirm': 'Are you sure?' }, class:"btn btn-danger" %>
+      </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+</div>
