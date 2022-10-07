@@ -22,15 +22,17 @@
     </tr>
   </thead>
   <tbody>
+    <% @recipe.recipe_food.each do |recipe| %>
     <tr class="row">
-      <td class="col">Mark</td>
-      <td class="col">Otto</td>
-      <td class="col">@mdo</td>
+      <td class="col"><%= recipe.food.name %></td>
+      <td class="col"><%= recipe.quantity %></td>
+      <td class="col">$<%= recipe.quantity * recipe.food.price %></td>
       <td class="col d-flex">
          <%= link_to  "MODIFY", recipe_path(@recipe), class:"btn btn-primary me-4" %>
-         <%= link_to "REMOVE", @recipe, data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure?' }, class:"btn btn-danger" %>
+         <%= button_to "REMOVE", recipe_food_path(recipe), method: :delete, class:"btn btn-danger" %>
       </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
 <%= link_to  "See all recipes", recipes_path, class:"btn btn-primary mt-5 align-self-end" %>
