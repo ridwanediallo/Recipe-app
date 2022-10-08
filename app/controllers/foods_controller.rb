@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
       format.html do
         if @food.save
           flash[:success] = 'Food saved successfully'
-          redirect_to food_path(@food)
+          redirect_to foods_path(@food)
         else
           flash.now[:error] = 'Error: Food could not be saved'
           redirect_to new_food_path
