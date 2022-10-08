@@ -8,8 +8,8 @@
   <p>Steps go here...</p>
 
   <div class="d-flex justify-content-between mt-5">
-    <button class="btn btn-secondary">Generate shopping list</button>
-    <button class="btn btn-secondary">Add Ingredient</button>
+    <%= link_to  "Generate shopping list", recipe_foods_path, class:"btn btn-primary me-4" %>
+    <%= link_to  "Add Ingredient", new_recipe_food_path, class:"btn btn-primary me-4" %>
   </div>
   <hr class="my-5 py-1 bg-dark"/>
   <table class="table table-striped table-hover table-bordered border-dark">
