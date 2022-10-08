@@ -1,0 +1,7 @@
+<h1>public recipes</h1>
+<% @recipes.each do |recipe| %> 
+    <h2><%= link_to recipe.name.capitalize, recipe_path(recipe.id) %></h2> 
+    <p>By: <%= recipe.user.name %></p> 
+    <p> Total food Items: <%= recipe.recipe_food.count(:id) %> </p> 
+    <p> Total Price: $ <%= recipe.recipe_food.sum { |item| item.food.price * item.quantity} %> </p> 
+    <% end %> 

@@ -1,0 +1,39 @@
+<div class="d-flex flex-column">
+  <h1 class="align-self-center"><%= @recipe.name %></h1>
+  <div class="d-flex justify-content-between mt-5">
+    <h4>Preparation time: <%= @recipe.preparation_time %></h4>
+    <button class="btn btn-secondary">Public</button>
+  </div>
+  <h4>Cooking time: <%= @recipe.cooking_time %></h4>
+  <p>Steps go here...</p>
+
+  <div class="d-flex justify-content-between mt-5">
+    <%= link_to  "Generate shopping list", recipe_foods_path, class:"btn btn-primary me-4" %>
+    <%= link_to  "Add Ingredient", new_recipe_food_path, class:"btn btn-primary me-4" %>
+  </div>
+  <hr class="my-5 py-1 bg-dark"/>
+  <table class="table table-striped table-hover table-bordered border-dark">
+  <thead class="container">
+    <tr class="row">
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Value</th>
+      <th class="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe.recipe_food.each do |recipe| %>
+    <tr class="row">
+      <td class="col"><%= recipe.food.name %></td>
+      <td class="col"><%= recipe.quantity %></td>
+      <td class="col">$<%= recipe.quantity * recipe.food.price %></td>
+      <td class="col d-flex">
+         <%= link_to  "MODIFY", recipe_path(@recipe), class:"btn btn-primary me-4" %>
+         <%= button_to "REMOVE", recipe_food_path(recipe), method: :delete, class:"btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to  "See all recipes", recipes_path, class:"btn btn-primary mt-5 align-self-end" %>
+</div>

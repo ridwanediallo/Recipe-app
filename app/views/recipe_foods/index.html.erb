@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="mb-4">Shopping List</h1>
+    <div class="d-flex justify-content-between mb-4">
+     <h4>Amount of food items to buy: <%=@foods.size %></h4>
+     <% sum = 0 %>
+     <% @foods.each do |food| %>
+        <% sum += food.food.price * food.quantity %>
+     <% end %>
+     <h4>Total vaule of food needed: $<%= sum %></h4>
+    </div>
+  <table class="table table-striped table-hover table-bordered border-dark">
+  <thead>
+    <tr>
+      <th class="col">Food</th>
+      <th class="col">Quantity</th>
+      <th class="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.food.name %></td>
+      <td><%= "#{food.food.quantity} #{food.food.measurement_unit}" %></td>
+      <td>$<%= food.food.price %></td>
+      </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+</div>
