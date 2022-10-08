@@ -1,5 +1,9 @@
 class RecipeFoodsController < ApplicationController
 
+    def index
+        @foods = current_user.recipe_foods
+    end
+
    def new
     @recipe_food = RecipeFood.new
    end
@@ -24,12 +28,12 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    p (params)
     @recipe_food = RecipeFood.find(params[:id])
     recipe_id = @recipe_food.recipe_id
     @recipe_food.destroy
     redirect_to recipe_path(recipe_id), notice: "Food was successfully destroyed."
   end
+
 
 
   protected
