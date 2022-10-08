@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: 't')
   end
 
-  def destroy
+   def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
     redirect_to recipes_url notice: "Recipe was successfully destroyed."
