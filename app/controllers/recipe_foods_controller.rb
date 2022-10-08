@@ -1,18 +1,17 @@
 class RecipeFoodsController < ApplicationController
+  def index
+    @foods = current_user.recipe_foods
+  end
 
-    def index
-        @foods = current_user.recipe_foods
-    end
-
-   def new
+  def new
     @recipe_food = RecipeFood.new
-   end
+  end
 
-   def show
+  def show
     @recipe_food = RecipeFood.find(params[:id])
-   end
+  end
 
-   def create
+  def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     respond_to do |format|
       format.html do
@@ -31,17 +30,14 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.find(params[:id])
     recipe_id = @recipe_food.recipe_id
     @recipe_food.destroy
-    redirect_to recipe_path(recipe_id), notice: "Food was successfully destroyed."
+    redirect_to recipe_path(recipe_id), notice: 'Food was successfully destroyed.'
   end
-
-
 
   protected
 
   def recipe_food_params
     params
       .require(:recipe_food)
-      .permit(:quantity, :recipe_id, :food_id )
+      .permit(:quantity, :recipe_id, :food_id)
   end
-
 end

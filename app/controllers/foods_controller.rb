@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-    def index
+  def index
     # @foods = current_user.foods.includes(:user)
     @foods = Food.all
   end
@@ -30,9 +30,8 @@ class FoodsController < ApplicationController
   def destroy
     @food = current_user.foods.find(params[:id])
     @food.destroy
-    redirect_to foods_url notice: "food was successfully destroyed."
+    redirect_to foods_url notice: 'food was successfully destroyed.'
   end
-
 
   protected
 

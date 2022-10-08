@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :foods
   # validates :name, presence: true
 
-    has_many :recipes
-    has_many :foods
-    has_many :recipe_foods, through: :recipes
-    # validates :name, presence: true
+  has_many :recipes
+  has_many :foods
+  has_many :recipe_foods, through: :recipes
+  # validates :name, presence: true
 end
