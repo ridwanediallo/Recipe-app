@@ -1,15 +1,9 @@
-<%= form_with model: @recipe_food, url: recipe_foods_path, method: :post, local: true, scope: :recipe_food do |form| %>
-  <% if @recipe_food.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@recipe_food.errors.size, "error") %> prohibited this food from being saved:</h2>
+<%= form_with model: @recipe_food, url: recipe_recipe_foods_path, method: :post, local: true, scope: :recipe_food do |form| %>
 
-      <ul>
-        <% @recipe_food.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+  <div class="form-group">
+    <%= form.select :food_id, options_for_select(@food_items), {}, { :class => 'form-select mb-3' } %>
+   </div>
 
   <div class="form-group">
     <%= form.label :quantity %>
@@ -17,15 +11,8 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :recipe_id %>
-    <%= form.text_field :recipe_id, class:"form-control" %>
+   <%= form.hidden_field :recipe_id, {value: @recipe.id} %>
   </div>
-
-  <div class="form-group">
-    <%= form.label :food_id %>
-    <%= form.text_field :food_id, class:"form-control" %>
-  </div>
-
   <div>
     <%= form.submit class:"btn btn-secondary" %>
   </div>
