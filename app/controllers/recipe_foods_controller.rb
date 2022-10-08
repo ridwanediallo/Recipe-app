@@ -3,8 +3,17 @@ class RecipeFoodsController < ApplicationController
     @foods = current_user.recipe_foods
   end
 
+  # def new
+  #   @recipe_food = RecipeFood.new
+  # end
+
   def new
-    @recipe_food = RecipeFood.new
+    @foods = current_user.foods
+    @food_items = []
+    @foods.each do |food|
+      @food_items << [food.name, food.id]
+    end
+    @recipe = current_user.recipes.find(params[:recipe_id])
   end
 
   def show
@@ -17,10 +26,10 @@ class RecipeFoodsController < ApplicationController
       format.html do
         if @recipe_food.save
           flash[:success] = 'Recipe_food saved successfully'
-          redirect_to recipe_food_path(@recipe_food)
+          redirect_to recipe_path(@recipe_food.recipe)
         else
           flash.now[:error] = 'Error: Recipe_food could not be saved'
-          redirect_to new_recipe_food_path
+          redirect_to new_recipe_recipe_food_path
         end
       end
     end
