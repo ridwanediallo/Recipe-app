@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
   def index
     # @user = User.includes(:recipes).find(params[:id])
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
+    @recipes = current_user.recipes.order(:id)
   end
 
   def show
@@ -34,8 +35,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
-    redirect_to recipes_url notice: 'Recipe was successfully destroyed.'
-  end
+    
 
   protected
 

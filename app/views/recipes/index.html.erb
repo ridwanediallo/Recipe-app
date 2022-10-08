@@ -1,4 +1,5 @@
 <div class="container">
+    <%= link_to  "Add a recipe", new_recipe_path, class:"btn btn-primary mb-4" %>
     <% @recipes.each do |recipe| %>
     <ul class="list-group">
        <li class="list-group-item d-flex justify-content-between mb-4">
