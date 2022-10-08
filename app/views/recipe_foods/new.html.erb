@@ -1,0 +1,19 @@
+<%= form_with model: @recipe_food, url: recipe_recipe_foods_path, method: :post, local: true, scope: :recipe_food do |form| %>
+
+
+  <div class="form-group">
+    <%= form.select :food_id, options_for_select(@food_items), {}, { :class => 'form-select mb-3' } %>
+   </div>
+
+  <div class="form-group">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+   <%= form.hidden_field :recipe_id, {value: @recipe.id} %>
+  </div>
+  <div>
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
+<% end %>
